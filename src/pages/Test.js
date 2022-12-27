@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // const i = "./img/intro.jpg"
 function Test() {
     return (
@@ -17,9 +18,9 @@ function Test() {
                                 routine - we guarantee it!</p>
                             <div className="mx-auto intro-button">
 
-                                <a className="btn btn-primary d-inline-block mx-auto btn-xl" role="button" href="#">
-                                    Visit Us Today!
-                                </a>
+                                <Link className="btn btn-primary d-inline-block mx-auto btn-xl" role="button" to="login">
+                                    Login Now
+                                </Link>
                             </div>
                         </div>
                     </div>
