@@ -1,6 +1,6 @@
 import React from 'react';
 import Test from './Test';
-import "./css/bootstrap.min.css"
+import "../css/bootstrap.min.css"
 import About from './About';
 import MoreProduct from './MoreProduct';
 import PageSection from './PageSection';
