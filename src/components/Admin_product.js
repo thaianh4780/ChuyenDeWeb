@@ -5,26 +5,26 @@ import Admin_sm_nav from './Admin_sm_nav'
 
 export default function Admin_product() {
   return (
-    <div class="container-fluid">
-      <h3 class="text-dark mb-4">&#8205; </h3>
-      <div class="card shadow">
-        <div class="card-body">
-          <div class="row my-2 ">
-            <div class="col-md-6 text-nowrap">
-              <div class="text-md-start dataTables_filter" id="dataTable_filter">
-                <label class="form-label">
-                  <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" />
+    <div className="container-fluid">
+      <h3 className="text-dark mb-4">&#8205; </h3>
+      <div className="card shadow">
+        <div className="card-body">
+          <div className="row my-2 ">
+            <div className="col-md-6 text-nowrap">
+              <div className="text-md-start dataTables_filter" id="dataTable_filter">
+                <label className="form-label">
+                  <input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" />
                 </label>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="d-grid gap-2 d-md-block text-md-end">
-                <Link class="btn btn-primary" type="button">Adding</Link>
+            <div className="col-md-6">
+              <div className="d-grid gap-2 d-md-block text-md-end">
+                <Link className="btn btn-primary" type="button">Adding</Link>
               </div>
             </div>
           </div>
-          <div class="table-responsive table mt-4" id="dataTable" role="grid" aria-describedby="dataTable_info">
-            <table class="table my-0" id="dataTable">
+          <div className="table-responsive table mt-4" id="dataTable" role="grid" aria-describedby="dataTable_info">
+            <table className="table my-0" id="dataTable">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -39,14 +39,14 @@ export default function Admin_product() {
                   return (
                     <tr>
                       <td>
-                      <img class="rounded-circle me-2" width="30" height="30" src={val.img} />{val.name}</td>
+                      <img className="rounded-circle me-2" width="30" height="30" src={val.img} />{val.name}</td>
                       <td>{val.price}</td>
                       <td>{val.desc}</td>
                       <td>
-                        <Link type="button" class="btn btn-success text-light btn-sm">Update</Link>
+                        <Link type="button" className="btn btn-success text-light btn-sm">Update</Link>
                       </td>
                       <td>
-                        <Link type="button" class="btn btn-danger text-light btn-sm">Detele</Link>
+                        <Link type="button" className="btn btn-danger text-light btn-sm">Detele</Link>
                       </td>
                     </tr>
                   )

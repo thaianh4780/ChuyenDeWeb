@@ -5,10 +5,10 @@ import '../css3/bootstrap.min.css'
 export default function MoreProduct() {
   return (
    
-    <section class="page-section cta">
-    <div class="container">
-        <div class="row">
-            <div class="col mx-auto">
+    <section className="page-section cta">
+    <div className="container">
+        <div className="row">
+            <div className="col mx-auto">
                 <Product/>
             </div>
         </div>

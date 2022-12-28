@@ -7,7 +7,7 @@ function Test() {
             <section className="page-section clearfix">
                 <div className="container">
                     <div className="intro">
-                    <img class="img-fluid intro-img mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg"/>
+                    <img className="img-fluid intro-img mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg"/>
                         <div className="text-center intro-text p-5 rounded bg-faded">
                             <h2 className="section-heading mb-4">
                                 <span className="section-heading-upper">Fresh Coffee</span>

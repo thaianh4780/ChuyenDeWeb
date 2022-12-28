@@ -7,12 +7,11 @@ export default function Admin_body() {
     <div id="page-top">
     <div id="wrapper">
         <Admin_nav/>
-        <div class="d-flex flex-column" id="content-wrapper">
+        <div className="d-flex flex-column" id="content-wrapper">
             <div id="content">
                <Admin_top/>
-              
             </div>
-            <footer class="bg-white sticky-footer">
+            <footer className="bg-white sticky-footer">
             </footer>
         </div>
     </div>
