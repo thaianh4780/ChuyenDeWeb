@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Admin_nav() {
+export default function AdminNav() {
   return (
     <nav className="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-1">
       <div className="container-fluid d-flex flex-column p-0">

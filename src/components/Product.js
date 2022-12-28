@@ -13,7 +13,7 @@ export default function Product() {
                         <div className="col-md-6 col-lg-4">
                             {DrinkData.map((val) => {
                                 return (
-                                    <div className="card border-0">
+                                    <div className="card border-0" key={val.id} >
                                         <a href="#">
                                             <img className="card-img-top scale-on-hover" src={val.img} alt="Card Image" />
                                         </a>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Admin_top() {
+export default function AdminTop() {
     return (
         <nav className="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
             <div className="container-fluid">

@@ -1,15 +1,15 @@
 import React from 'react'
-import Admin_nav from './Admin_nav'
-import Admin_top from './Admin_top'
+import AdminNav from './AdminNav'
+import AdminTop from './AdminTop'
 
-export default function Admin_body() {
+export default function AdminBody() {
   return (
     <div id="page-top">
     <div id="wrapper">
-        <Admin_nav/>
+        <AdminNav/>
         <div className="d-flex flex-column" id="content-wrapper">
             <div id="content">
-               <Admin_top/>
+               <AdminTop/>
             </div>
             <footer className="bg-white sticky-footer">
             </footer>

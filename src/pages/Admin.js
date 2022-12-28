@@ -1,21 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Admin_footer from '../components/Admin_footer'
-import Admin_nav from '../components/Admin_nav'
-import Admin_staff from '../components/Admin_staff'
-import Admin_top from '../components/Admin_top'
+import AdminFooter from '../components/AdminFooter'
+import AdminNav from '../components/AdminNav'
+import AdminStaff from '../components/AdminStaff'
+import AdminTop from '../components/AdminTop'
 import '../css1/bootstrap.min.css'
 export default function Admin() {
     return (
         <div id="page-top">
             <div id="wrapper">
-                <Admin_nav />
+                <AdminNav />
                 <div className="d-flex flex-column" id="content-wrapper">
                     <div id="content">
-                        <Admin_top />
-                        <Admin_staff />
+                        <AdminTop />
+                        <AdminStaff />
                     </div>
-                    <Admin_footer />
+                    <AdminFooter />
                 </div>
             </div>
         </div>

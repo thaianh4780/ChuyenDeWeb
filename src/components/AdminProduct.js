@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import StaffData from '../data/StaffData'
-import Admin_sm_nav from './Admin_sm_nav'
+import DrinkData from '../data/DrinkData'
+import AdminSmNav from './AdminSmNav'
 
-export default function Admin_staff() {
+export default function AdminProduct() {
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">&#8205; </h3>
@@ -19,7 +19,7 @@ export default function Admin_staff() {
             </div>
             <div className="col-md-6">
               <div className="d-grid gap-2 d-md-block text-md-end">
-                <Link className="btn btn-primary  " type="button">Adding </Link>
+                <Link className="btn btn-primary" type="button">Adding</Link>
               </div>
             </div>
           </div>
@@ -28,24 +28,25 @@ export default function Admin_staff() {
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Salary</th>
-                  <th>Phone Number</th>
+                  <th>Price</th>
+                  <th>Description</th>
                   <th></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {StaffData.map((val) => {
+                {DrinkData.map((val) => {
                   return (
                     <tr>
-                      <td>{val.name}</td>
-                      <td>{val.salary}</td>
-                      <td>{val.number}</td>
                       <td>
-                        <Link type="button" className="btn btn-success  text-light btn-sm">Update</Link>
+                      <img className="rounded-circle me-2" width="30" height="30" src={val.img} />{val.name}</td>
+                      <td>{val.price}</td>
+                      <td>{val.desc}</td>
+                      <td>
+                        <Link type="button" className="btn btn-success text-light btn-sm">Update</Link>
                       </td>
                       <td>
-                        <Link type="button" className="btn btn-danger   text-light btn-sm">Detele</Link>
+                        <Link type="button" className="btn btn-danger text-light btn-sm">Detele</Link>
                       </td>
                     </tr>
                   )
@@ -55,7 +56,7 @@ export default function Admin_staff() {
               </tfoot>
             </table>
           </div>
-          <Admin_sm_nav />
+          <AdminSmNav />
         </div>
       </div>
     </div>

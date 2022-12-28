@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Admin_sm_nav() {
+export default function AdminSmNav() {
     return (
         <div className="row mx-2 mt-4">
             <div className="col-md-6 align-self-center">
