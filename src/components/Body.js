@@ -7,15 +7,8 @@ import PageSection from './PageSection';
 import Navigation from './Navigation';
 const Body = () => {
     return (
-        <div style={{ backgroundImage: `url("assets/img/bg.jpg")` ,marginTop:"-5%" }}>
-            <h1 className="text-center text-white d-none d-lg-block site-heading pt-5">
-                <span className="site-heading-lower">Business Casual</span>
-            </h1>
-            {/* <Navigation/> */}
-            <Test />
+        <div style={{ backgroundImage: `url("assets/img/bg.jpg")` , }} className="py-5">
             <MoreProduct />
-            {/* <PageSection /> */}
-            <About />
         </div>
     );
 }
