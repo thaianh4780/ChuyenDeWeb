@@ -8,6 +8,10 @@ import Admin from '../pages/Admin'
 import NotFound from '../pages/404NotFound'
 import Login from "../pages/Login";
 import Product from "../pages/Product";
+import ProductAdding from "../pages/ProductAdding";
+import StaffAdding from "../pages/StaffAdding";
+import StaffUpdating from "../pages/StaffUpdating";
+import ProductUpdating from "../pages/ProductUpdating";
 
 export default function Routers() {
 
@@ -16,6 +20,10 @@ export default function Routers() {
       <Router>
         <Routes>
           <Route path={"/"} element={<Home/>}/>
+          <Route path={"/productadding"} element={<ProductAdding/>}/>
+          <Route path={"/productupdating"} element={<ProductUpdating/>}/>
+          <Route path={"/staffadding"} element={<StaffAdding/>}/>
+          <Route path={"/staffupdating"} element={<StaffUpdating/>}/>
           <Route path={"/admin"} element={<Admin/>}/>
           <Route path={"/product"} element={<Product/>}/>
           <Route path={"/login"} element={<Login/>}/>

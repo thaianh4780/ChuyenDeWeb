@@ -116,7 +116,7 @@ export default function MoreProduct() {
 
   const checkKey = () => {
     setCheck(!check);
-     setTypeSort(null);
+    setTypeSort(null);
   };
 
   useEffect(() => {
@@ -133,20 +133,28 @@ export default function MoreProduct() {
       <div className="row pb-1">
         <div className="col-12">
           <div className="row text-center d-flex align-items-center bg-white rounded-3  justify-content-center " >
-            <div className="col-6 bg-success-subtle rounded-start" style={{marginTop:"-1.5%"}}>
+            <div className="col-6 bg-success-subtle rounded-start" style={{ marginTop: "-1.5%" }}>
               <div class="d-flex my-2 justify-content-between col-4 mb-4">
-                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={()=>{
+                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={() => {
                   checkKey();
                 }}>ALL</button>
-                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={()=>{
+                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={() => {
                   setTypeSort("sortIncrease");
                 }}>Increase</button>
-                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={()=>{
-                  setTypeSort("sortIncrease");
-                }}>Increase</button>
-                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={()=>{
+                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={() => {
                   setTypeSort("sortDecrease");
                 }}>Decrease</button>
+                <div class="dropdown">
+                  <a class="btn btn-outline-primary  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown link
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
               </div>
               <div className="row row-cols-1 row-cols-md-4 g-4 mx-2 overflow-y-scroll over me-5 " style={{ overflowY: 'scroll', height: '600px', width: '100%' }}>
                 {checkType()}
@@ -161,8 +169,8 @@ export default function MoreProduct() {
                 <p className="text-black fs-5" >{price}  &#8205; VND</p>
               </div>
               <div className="btn w-100 position-absolute bottom-0 mt-3 d-flex justify-content-between">
-                <button className="bg-success w-50" style={{height:50,marginLeft:"5%" }} >Thanh Toan</button>
-                <button className="bg-info w-50 " style={{height:50}} >Thong Bao</button>
+                <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} >Thanh Toan</button>
+                <button className="bg-info w-50 " style={{ height: 50 }} >Thong Bao</button>
               </div>
             </div>
           </div>

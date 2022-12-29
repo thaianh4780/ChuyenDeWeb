@@ -31,7 +31,7 @@ export default function AdminStaff() {
         <td>{val.full_name}</td>
         <td>{val.phone}</td>
         <td>
-          <Link type="button" className="btn btn-success  text-light btn-sm">Update</Link>
+          <Link type="button" className="btn btn-success  text-light btn-sm" to="/staffupdating" >Update</Link>
         </td>
         <td>
           <Link type="button" className="btn btn-danger   text-light btn-sm">Detele</Link>
@@ -57,7 +57,7 @@ export default function AdminStaff() {
             </div>
             <div className="col-md-6">
               <div className="d-grid gap-2 d-md-block text-md-end">
-                <Link className="btn btn-primary  " type="button">Adding </Link>
+                <Link className="btn btn-primary  " type="button" to="/staffadding" >Adding </Link>
               </div>
             </div>
           </div>
