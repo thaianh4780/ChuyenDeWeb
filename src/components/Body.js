@@ -7,7 +7,7 @@ import PageSection from './PageSection';
 import Navigation from './Navigation';
 const Body = () => {
     return (
-        <div style={{ backgroundImage: `url("assets/img/bg.jpg")` , }} className="py-5">
+        <div style={{ backgroundImage: `url("assets/img/bg.jpg")` , }} className="py-4">
             <MoreProduct />
         </div>
     );

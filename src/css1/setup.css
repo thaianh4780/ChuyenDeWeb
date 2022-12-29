@@ -17,10 +17,10 @@
     height: 30px;
     width: 30px;
     justify-content: center;
-    border: 1px solid black;
+    border: 1px solid grey;
     border-radius: 15px;
     background-color: transparent;
-    color: black;
+    color: grey;
     font-size: 20px;
     font-weight: bold;
 }
@@ -57,3 +57,7 @@ p {
 /* .card-body h5 , .card-body p {
     font-size:15px
 } */
+
+.minus-top{
+    margin-top:-20%
+}
