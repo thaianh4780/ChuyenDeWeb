@@ -10,7 +10,7 @@ export default function Product() {
                         <h2>Recent Work</h2>
                     </div>
                     <div className="row">
-                        <div className="col-md-6 col-lg-4">
+                        {/* <div className="col-md-6 col-lg-4">
                             {DrinkData.map((val) => {
                                 return (
                                     <div className="card border-0" key={val.id} >
@@ -27,7 +27,7 @@ export default function Product() {
                                     </div>
                                 )
                             })}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>

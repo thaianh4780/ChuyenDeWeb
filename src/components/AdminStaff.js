@@ -1,9 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import StaffData from '../data/StaffData'
+import url from '../Url';
 import AdminSmNav from './AdminSmNav'
 
 export default function AdminStaff() {
+
+  const [listUser, setListUser] = useState([]);
+
+  useEffect(() => {
+    getListUser();
+  }, []);
+
+  // lấy tất cả nhan vien 
+   //get list user
+   const getListUser = async () => {
+    await fetch(url + "user/all")
+      .then((res) => res.json())
+      .then((res) => {
+        var data = res;
+        setListUser(data);
+      })
+      .catch((err) => console.log("ERR", err));
+  };
+
+  const staffs = listUser.map((val) => {
+    return (
+      <tr key={val.id} >
+        <td>{val.user_name}</td>
+        <td>{val.full_name}</td>
+        <td>{val.phone}</td>
+        <td>
+          <Link type="button" className="btn btn-success  text-light btn-sm">Update</Link>
+        </td>
+        <td>
+          <Link type="button" className="btn btn-danger   text-light btn-sm">Detele</Link>
+        </td>
+      </tr>
+    );
+  });
+
+
+
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">&#8205; </h3>
@@ -28,28 +66,14 @@ export default function AdminStaff() {
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Salary</th>
+                  <th>Full Name</th>
                   <th>Phone Number</th>
                   <th></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {StaffData.map((val) => {
-                  return (
-                    <tr key={val.id} >
-                      <td>{val.name}</td>
-                      <td>{val.salary}</td>
-                      <td>{val.number}</td>
-                      <td>
-                        <Link type="button" className="btn btn-success  text-light btn-sm">Update</Link>
-                      </td>
-                      <td>
-                        <Link type="button" className="btn btn-danger   text-light btn-sm">Detele</Link>
-                      </td>
-                    </tr>
-                  )
-                })}
+                {staffs}
               </tbody>
               <tfoot>
               </tfoot>

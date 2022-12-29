@@ -1,23 +1,24 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-// import Admin_footer from '../components/Admin_footer'
-// import Admin_nav from '../components/Admin_nav'
-// import Admin_product from '../components/Admin_product'
-// import Admin_top from '../components/Admin_top'
-// import '../css1/bootstrap.min.css'
-// export default function Product() {
-//     return (
-//         <div id="page-top">
-//             <div id="wrapper">
-//                 <Admin_nav />
-//                 <div className="d-flex flex-column" id="content-wrapper">
-//                     <div id="content">
-//                         <Admin_top />
-//                         <Admin_product />
-//                     </div>
-//                     <Admin_footer />
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
+import React from 'react'
+import { Link } from 'react-router-dom'
+import AdminFooter from '../components/AdminFooter'
+import AdminNav from '../components/AdminNav'
+import AdminProduct from '../components/AdminProduct'
+import AdminTop from '../components/AdminTop'
+import '../css1/bootstrap.min.css'
+
+export default function Product() {
+    return (
+        <div id="page-top">
+            <div id="wrapper">
+                <AdminNav/>
+                <div className="d-flex flex-column" id="content-wrapper">
+                    <div id="content">
+                        <AdminTop />
+                        <AdminProduct />
+                    </div>
+                    <AdminFooter />
+                </div>
+            </div>
+        </div>
+    )
+}

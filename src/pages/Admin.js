@@ -4,6 +4,7 @@ import AdminNav from '../components/AdminNav'
 import AdminStaff from '../components/AdminStaff'
 import AdminTop from '../components/AdminTop'
 import '../css1/bootstrap.min.css'
+
 export default function Admin() {
     return (
         <div id="page-top">
