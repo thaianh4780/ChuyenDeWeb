@@ -16,7 +16,9 @@ function App() {
   return (
     <div className="App"  >
       <Routers />
-      <ToastContainer />
+      <ToastContainer 
+      newestOnTop
+      limit={3}/>
     </div>
   );
 }

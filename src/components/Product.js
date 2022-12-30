@@ -1,5 +1,5 @@
 import React from 'react'
-import DrinkData from '../data/DrinkData'
+// import DrinkData from '../data/DrinkData'
 
 export default function Product() {
     return (

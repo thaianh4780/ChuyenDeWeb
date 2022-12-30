@@ -21,7 +21,7 @@ export default function Login() {
     const notificate = (err) => {
         toast.error(err , {
             position: "top-center",
-            autoClose: 5000,
+            autoClose: 600,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
