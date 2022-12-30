@@ -1,10 +1,84 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-// import '../css1/bootstrap.min.css'
+import { useState, useEffect, } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../css1/bootstrap.min.css'
+import url from '../Url';
+import Cookies from "universal-cookie";
 import "../css1/setup.css"
-
-
 export default function Login() {
+    
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+    const cookie = new Cookies();
+    const navigate = useNavigate();
+    let role = '';
+    const [listRole, setListRole] = useState([""]);
+    // let [checked, setChecked] = useState(false);
+    // const handleChange = (e) => {
+    //     setChecked(e.target.checked);
+    // };
+
+    const notificate = (err) => {
+        toast.error(err , {
+            position: "top-center",
+            autoClose: 600,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+    }
+    const getListRole = async () => {
+        await fetch(url + 'role/all')
+            .then((res) => res.json())
+            .then((res) => {
+                setListRole(res)
+            })
+            .catch((err) => console.log("ERR", err));
+    };
+    useEffect(() => { getListRole() }, [])
+    const checkRole = async () => {
+        listRole.map((item) => {
+            if (item.role_name == "Admin") {
+                role = item;
+            }
+        });
+        return role;
+    };
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const user = {
+            user_name: userName,
+            password: password
+        };
+        checkRole();
+        await fetch(url + "user/login", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(user),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.error) {
+                    notificate(res.error)
+                    console.log(res.error);
+                } else {
+                    console.log(res.role);
+                    if (res.role == role._id) {
+                        cookie.set('token', res.token);
+                        const user = res.user_name
+                        localStorage.setItem('user', user);
+                        return navigate("/admin");
+                    } else {
+                        return console.log("User not admin");
+                    }
+                }
+            });
+        // return loginUser(user, role, dispatch, navigate);
+    }
     return (
         <div className="bg-gradient-primary line" >
             <div className="container ">
@@ -21,7 +95,7 @@ export default function Login() {
                                             <div className="text-center">
                                                 <h4 className="text-dark mb-4">Welcome Back!</h4>
                                             </div>
-                                            <form className="user">
+                                            <form className="user" onSubmit={handleLogin}>
                                                 <div className="mb-3">
                                                     <input className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" />
                                                 </div>
