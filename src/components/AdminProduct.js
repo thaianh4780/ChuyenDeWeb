@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import DrinkData from '../data/DrinkData'
-import AdminSmNav from './AdminSmNav'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import DrinkData from "../data/DrinkData";
+import AdminSmNav from "./AdminSmNav";
 import url from "../Url";
-
 
 export default function AdminProduct() {
   const [listDrink, setListDrink] = useState([]);
+  const [check, setCheck] = useState(false);
 
   useEffect(() => {
     getListDrink();
-  }, []);
-
+  }, [check]);
 
   // lấy tất cả đồ uống
   const getListDrink = async () => {
@@ -26,19 +25,50 @@ export default function AdminProduct() {
       .catch((err) => console.log("ERR", err));
   };
 
+  const deleteDrink = async (id) => {
+    await fetch(url + "drink/delete/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setCheck(!check);
+      })
+      .catch((err) => console.log("ERR", err));
+      alert("Done Delete")
+  };
+  
+
   const drinks = listDrink.map((val) => {
     return (
       <tr>
-        <td >
-          <img className="rounded-circle me-2" width="50" height="50" src={val.image} />
+        <td>
+          <img
+            className="rounded-circle me-2"
+            width="50"
+            height="50"
+            src={val.image}
+          />
         </td>
         <td>{val.name}</td>
         <td>{val.price}</td>
         <td>
-          <Link type="button" className="btn btn-success text-light btn-sm" to="/productupdating" ><i class="fa-solid fa-square-pen pe-1"></i>Update</Link>
+          <Link
+            type="button"
+            className="btn btn-success text-light btn-sm"
+            to="/productupdating"
+          >
+            <i class="fa-solid fa-square-pen pe-1"></i>Update
+          </Link>
         </td>
         <td>
-          <Link type="button" className="btn btn-danger text-light btn-sm"><i class="fa-solid fa-trash pe-1"></i>Detele</Link>
+          <Link
+            type="button"
+            onClick={() => deleteDrink(val._id)}
+            className="btn btn-danger text-light btn-sm"
+          >
+            <i class="fa-solid fa-trash pe-1"></i>Detele
+          </Link>
         </td>
       </tr>
     );
@@ -51,21 +81,40 @@ export default function AdminProduct() {
         <div className="card-body">
           <div className="row my-2 ">
             <div className="col-md-6 text-nowrap">
-              <div className="text-md-start dataTables_filter" id="dataTable_filter">
+              <div
+                className="text-md-start dataTables_filter"
+                id="dataTable_filter"
+              >
                 <label className="form-label">
-                  <input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" />
+                  <input
+                    type="search"
+                    className="form-control form-control-sm"
+                    aria-controls="dataTable"
+                    placeholder="Search"
+                  />
                 </label>
               </div>
             </div>
             <div className="col-md-6">
               <div className="d-grid gap-2 d-md-block text-md-end">
-                <Link className="btn btn-primary" type="button" to="/productadding" ><i class="fa-solid fa-circle-plus mx-2"></i>Adding</Link>
+                <Link
+                  className="btn btn-primary"
+                  type="button"
+                  to="/productadding"
+                >
+                  <i class="fa-solid fa-circle-plus mx-2"></i>Adding
+                </Link>
               </div>
             </div>
-          </div>
-          <div className="table-responsive table mt-4" id="dataTable" role="grid" aria-describedby="dataTable_info">
+</div>
+          <div
+            className="table-responsive table mt-4"
+            id="dataTable"
+            role="grid"
+            aria-describedby="dataTable_info"
+          >
             <table className="table my-0" id="dataTable">
-              <thead className='mb-5'>
+              <thead className="mb-5">
                 <tr>
                   <th>Image</th>
                   <th>Name</th>
@@ -73,8 +122,8 @@ export default function AdminProduct() {
                   <th></th>
                   <th></th>
                 </tr>
-              </thead >
-              <tbody  >
+              </thead>
+              <tbody>
                 {/* {DrinkData.map((val) => {
                   return (
                     <tr>
@@ -92,15 +141,13 @@ export default function AdminProduct() {
                   )
                 })} */}
                 {drinks}
-
               </tbody>
-              <tfoot>
-              </tfoot>
+              <tfoot></tfoot>
             </table>
           </div>
           <AdminSmNav />
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -11,25 +11,25 @@ import url from '../Url'
 export default function Product() {
     const navigate = useNavigate()
     const cookie = new Cookies();
-    useEffect(()=>{
+    useEffect(() => {
         if (!cookie.get('token')) {
             return navigate('../login', { replace: true })
-          } else {
-             fetch(url + 'user/check/' + cookie.get('token'))
-              .then((res) => res.json())
-              .then((res) => {
-                if (res.error) {
-                  console.log(res.error);
-                  return navigate('../login', { replace: true })
-                }
-              })
-              .catch((err) => console.log("ERR", err));
-          }  
+        } else {
+            fetch(url + 'user/check/' + cookie.get('token'))
+                .then((res) => res.json())
+                .then((res) => {
+                    if (res.error) {
+                        console.log(res.error);
+                        return navigate('../login', { replace: true })
+                    }
+                })
+                .catch((err) => console.log("ERR", err));
+        }
     }, [])
     return (
         <div id="page-top">
             <div id="wrapper">
-                <AdminNav/>
+                <AdminNav />
                 <div className="d-flex flex-column" id="content-wrapper">
                     <div id="content">
                         <AdminTop />
