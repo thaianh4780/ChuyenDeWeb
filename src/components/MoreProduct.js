@@ -14,21 +14,25 @@ export default function MoreProduct() {
   const [listCategory, setListCategory] = useState([]);
   const [typeSort, setTypeSort] = useState("");
   const [listSortDrinkOnPrice, setListSortDrinkOnPrice] = useState([]);
-  
+
   const [number, setNumber] = useState([]);
-  const [check, setCheck] = useState(false);  
+  const [check, setCheck] = useState(false);
   const [type, setType] = useState("");
-  const handleChangeType = (id)=>{
-      console.log(id);
-      setType(id);
+  const handleChangeType = (id) => {
+    setType(id);
   }
 
   // xuất danh mục xuống dropdown
   const dataCategory = listCategory.map((item) => {
-    
     return <div key={item._id}>
       <a className="dropdown-item text-capitalize ps-2" onClick={() => handleChangeType(item._id)} >{item.name}</a>
     </div>
+  });
+
+  const dropdown = listCategory.map((item) => {
+    if (type == item._id) {
+      return item.name;
+    }
   });
 
   useEffect(() => {
@@ -54,9 +58,7 @@ export default function MoreProduct() {
     await fetch(url + "category/list")
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res.data);
-        var data = res.data;
-        setListCategory(data);
+        setListCategory(res.data);
       })
       .catch((err) => console.log("ERR", err));
   };
@@ -65,10 +67,7 @@ export default function MoreProduct() {
     await fetch(url + "drink/category/" + type)
       .then((res) => res.json())
       .then((res) => {
-        // console.log("drink by category: ");
-        // console.log(res.data);
-        var data = res.data;
-        setListDrinkByCategory(data);
+        setListDrinkByCategory(res.data);
       })
       .catch((err) => console.log("ERR", err));
   };
@@ -76,22 +75,15 @@ export default function MoreProduct() {
     await fetch(url + "drink/" + typeSort)
       .then((res) => res.json())
       .then((res) => {
-        var data = res.data;
-
-        setListSortDrinkOnPrice(data);
+        setListSortDrinkOnPrice(res.data);
       })
       .catch((err) => console.log("ERR", err));
   };
-  // const dataCategory = listCategory.map((item) => {
-  //   return <text key={item._id}>{item.name}</text>;
-  // });
-
   // lấy tất cả đồ uống
   const getListDrink = async () => {
     await fetch(url + "drink/list")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         var data = res.data;
         setListDrink(data);
       })
@@ -99,8 +91,6 @@ export default function MoreProduct() {
   };
 
   const handleChangeNumber = (id, count) => {
-    // setNumber(count);
-    // console.log(number);
     var drinks = listDrink1;
     drinks.map((drink) => {
       if (drink._id === id) {
@@ -137,8 +127,6 @@ export default function MoreProduct() {
       <VerticalItem key={val._id} name={val.name} image={val.image} price={val.price} addToList={addToList} drink={val} />
     )
   });
-
-  // console.log("log cate:" + dataCategory);
 
   const handleTotal = () => {
     var sumPrice = 0;
@@ -196,11 +184,9 @@ export default function MoreProduct() {
                     setTypeSort("sortDecrease");
                   }}>Decrease
                 </button>
-
-
                 <div className="dropdown">
                   <a className="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown link
+                    {type != "" ? dropdown : "Category"}
                   </a>
                   <ul className="dropdown-menu" >
                     <li >
@@ -209,8 +195,6 @@ export default function MoreProduct() {
                   </ul>
                 </div>
               </div>
-
-              
               <div className="row row-cols-1 row-cols-md-4 g-4 mx-2 overflow-y-scroll over me-5 " style={{ overflowY: 'scroll', height: '600px', width: '100%' }}>
                 {checkType()}
               </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import url from '../Url';
 
 export default function HorizonItem(props) {
-
     const [num, setNum] = useState(1);
     const total = num*props.price
     const incNum = () => {

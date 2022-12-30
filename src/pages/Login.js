@@ -62,16 +62,15 @@ export default function Login() {
             .then((res) => {
                 if (res.error) {
                     notificate(res.error)
-                    console.log(res.error);
                 } else {
-                    console.log(res.role);
+                    console.log(role._id);
                     if (res.role == role._id) {
                         cookie.set('token', res.token);
                         const user = res.user_name
                         localStorage.setItem('user', user);
                         return navigate("/admin");
                     } else {
-                        return console.log("User not admin");
+                        return notificate("User not admin");
                     }
                 }
             });

@@ -77,7 +77,6 @@ export default function StaffForm() {
 
     //update user
     const updateUser = async (values) => {
-        console.log(values);
         fetch(url + 'user/update/' + id, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
