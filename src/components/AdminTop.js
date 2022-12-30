@@ -1,6 +1,16 @@
-import React from 'react'
+import Cookies from "universal-cookie";
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminTop() {
+    const navigate = useNavigate();
+    const user = localStorage.getItem('user');
+    const cookie = new Cookies();
+    const logout = () => {
+        localStorage.clear();
+        cookie.remove('token');
+        navigate('/login');
+    }
+    console.log(user);
     return (
         <nav className="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
             <div className="container-fluid">
@@ -12,7 +22,7 @@ export default function AdminTop() {
                     <li className="nav-item dropdown no-arrow">
                         <div className="nav-item dropdown no-arrow">
                             <a className="dropdown-toggle nav-link" href="#">
-                                <span className="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span>
+                                <span className="d-none d-lg-inline me-2 text-gray-600 small">Hi {user}</span>
                                 <img className="border rounded-circle img-profile" src="assets1/img/avatars/avatar1.jpeg" />
                             </a>
                         </div>
