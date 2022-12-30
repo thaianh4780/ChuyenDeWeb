@@ -23,10 +23,10 @@ export default function AdminNav() {
               <span className="fs-5" >Product</span>
               {/* <hr className="border border-light border-2 opacity-50" style={{marginTop:"-1%", }} ></hr> */}
             </Link>
-            <Link className="nav-link active" to="/login" >
+            {/* <Link className="nav-link active" to="/login" >
               <span className="fs-5" >Log Out</span>
-              {/* <hr className="border border-light border-2 opacity-50" style={{marginTop:"-1%", }} ></hr> */}
-            </Link>
+              <hr className="border border-light border-2 opacity-50" style={{marginTop:"-1%", }} ></hr>
+            </Link> */}
           </li>
         </ul>
       </div>

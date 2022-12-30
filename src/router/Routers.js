@@ -22,9 +22,9 @@ export default function Routers() {
           <Route path={"/"} element={<Home/>}/>
           <Route path={"/total"} element={<Total/>}/>
           <Route path={"/productadding"} element={<ProductAdding/>}/>
-          <Route path={"/productupdating"} element={<ProductUpdating/>}/>
+          <Route path={"/productupdating/:id"} element={<ProductUpdating/>}/>
           <Route path={"/staffadding"} element={<StaffAdding/>}/>
-          <Route path={"/staffupdating"} element={<StaffUpdating/>}/>
+          <Route path={"/staffupdating/:id"} element={<StaffUpdating/>}/>
           <Route path={"/admin"} element={<Admin/>}/>
           <Route path={"/product"} element={<Product/>}/>
           <Route path={"/login"} element={<Login/>}/>

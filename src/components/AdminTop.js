@@ -11,7 +11,6 @@ export default function AdminTop() {
         cookie.remove('token');
         navigate('/login');
     }
-    console.log(user);
     return (
         <nav className="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
             <div className="container-fluid">

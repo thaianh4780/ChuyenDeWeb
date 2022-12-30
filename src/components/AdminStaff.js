@@ -3,9 +3,22 @@ import { Link } from 'react-router-dom'
 import StaffData from '../data/StaffData'
 import url from '../Url';
 import AdminSmNav from './AdminSmNav'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AdminStaff() {
-
+  const notificate = (err) => {
+    toast.error(err, {
+      position: "top-center",
+      autoClose: 600,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }
   const [listUser, setListUser] = useState([]);
 
   useEffect(() => {
@@ -13,8 +26,8 @@ export default function AdminStaff() {
   }, []);
 
   // lấy tất cả nhan vien 
-   //get list user
-   const getListUser = async () => {
+  //get list user
+  const getListUser = async () => {
     await fetch(url + "user/all")
       .then((res) => res.json())
       .then((res) => {
@@ -24,6 +37,20 @@ export default function AdminStaff() {
       .catch((err) => console.log("ERR", err));
   };
 
+  const deleteUser = (id) => {
+    fetch(url + "user/delete/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => res)
+      .then((data) => {
+        if (data.error) {
+          notificate(data.error);
+        } else {
+          notificate(data);
+        }
+      });
+  };
+
   const staffs = listUser.map((val) => {
     return (
       <tr key={val.id} >
@@ -31,17 +58,20 @@ export default function AdminStaff() {
         <td>{val.full_name}</td>
         <td>{val.phone}</td>
         <td>
-          <Link type="button" className="btn btn-success  text-light btn-sm" to="/staffupdating" >Update</Link>
+          <Link type="button" className="btn btn-success  text-light btn-sm" to={`/staffupdating/${val._id}`} >
+            <i class="fa-solid fa-square-pen pe-1"></i>
+            Update
+          </Link>
         </td>
         <td>
-          <Link type="button" className="btn btn-danger   text-light btn-sm">Detele</Link>
+          <button type="button" className="btn btn-danger   text-light btn-sm" onClick={() => { deleteUser(val._id) }}>
+            <i class="fa-solid fa-trash pe-1"></i>
+            Detele
+          </button>
         </td>
       </tr>
     );
   });
-
-
-
   return (
     <div className="container-fluid">
       <h3 className="text-dark mb-4">&#8205; </h3>
@@ -57,7 +87,10 @@ export default function AdminStaff() {
             </div>
             <div className="col-md-6">
               <div className="d-grid gap-2 d-md-block text-md-end">
-                <Link className="btn btn-primary  " type="button" to="/staffadding" >Adding </Link>
+                <Link className="btn btn-primary  " type="button" to="/staffadding" >
+                  <i class="fa-solid fa-circle-plus mx-2"></i>
+                  Adding
+                </Link>
               </div>
             </div>
           </div>

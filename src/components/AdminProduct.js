@@ -35,9 +35,9 @@ export default function AdminProduct() {
         setCheck(!check);
       })
       .catch((err) => console.log("ERR", err));
-      alert("Done Delete")
+    alert("Done Delete")
   };
-  
+
 
   const drinks = listDrink.map((val) => {
     return (
@@ -56,7 +56,7 @@ export default function AdminProduct() {
           <Link
             type="button"
             className="btn btn-success text-light btn-sm"
-            to="/productupdating"
+            to={`/productupdating/${val._id}`}
           >
             <i class="fa-solid fa-square-pen pe-1"></i>Update
           </Link>
@@ -106,7 +106,7 @@ export default function AdminProduct() {
                 </Link>
               </div>
             </div>
-</div>
+          </div>
           <div
             className="table-responsive table mt-4"
             id="dataTable"
