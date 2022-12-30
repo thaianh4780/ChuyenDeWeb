@@ -9,7 +9,7 @@ export default function HorizonItem(props) {
         setNum(num + 1)
     };
     const decNum = () => {
-        if (num > 1) {
+        if (num > 0) {
             setNum(num - 1);
         }
     }
@@ -17,7 +17,7 @@ export default function HorizonItem(props) {
        props.handleChangeCount(props.id,num);
       }, [num]);
     return (
-        <div className="row height shadow-sm bg-body-tertiary overflow-hidden d-flex justify-content-between w-100 bg-white rounded-2 mt-2 border border-dark-subtle mx-1"  >
+        <div className="row height shadow-sm bg-body-tertiary overflow-hidden d-flex justify-content-between w-100 bg-white rounded-2 mt-2 border border-dark-subtle ms-1">
             <div className="col-5 ">
                 <div className="p-3 h-100 d-flex ">
                     <img className="rounded-2 me-2" width={50} height={50} src={props.image} />

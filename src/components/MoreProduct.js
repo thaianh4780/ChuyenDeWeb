@@ -9,16 +9,39 @@ import HorizonItem from './HorizonItem'
 export default function MoreProduct() {
   const [listDrink, setListDrink] = useState([]);
   const [listDrink1, setListDrink1] = useState([]);
+  const [listDrinkByCategory, setListDrinkByCategory] = useState([]);
   const [price, setPrice] = useState();
   const [listCategory, setListCategory] = useState([]);
   const [typeSort, setTypeSort] = useState("");
   const [listSortDrinkOnPrice, setListSortDrinkOnPrice] = useState([]);
   const [number, setNumber] = useState([]);
   const [check, setCheck] = useState(false);
+  const [type, setType] = useState("");
+
+  // xuất danh mục xuống dropdown
+  const dataCategory = listCategory.map((item) => {
+    return <div key={item._id}>
+      <a className="dropdown-item text-capitalize ps-2" onClick={(item, index) => {
+        // setCategoryId(item.key);
+        setType(item.key);
+        console.log("key: " + item.key);
+      }} >{item.name}</a>
+    </div>
+  });
 
   useEffect(() => {
     getListDrink();
+    getListCategory();
   }, [check]);
+
+  useEffect(() => {
+    if (type) {
+      getListDrinkByCategory();
+    } else {
+      getListDrink();
+    }
+  }, [type, check]);
+
   useEffect(() => {
     if (typeSort) {
       getListDrinkOnPrice();
@@ -35,7 +58,18 @@ export default function MoreProduct() {
       })
       .catch((err) => console.log("ERR", err));
   };
-
+  // lấy các đồ uống thuộc 1 danh mục
+  const getListDrinkByCategory = async () => {
+    await fetch(url + "drink/category/" + type)
+      .then((res) => res.json())
+      .then((res) => {
+        // console.log("drink by category: ");
+        // console.log(res.data);
+        var data = res.data;
+        setListDrinkByCategory(data);
+      })
+      .catch((err) => console.log("ERR", err));
+  };
   const getListDrinkOnPrice = async () => {
     await fetch(url + "drink/" + typeSort)
       .then((res) => res.json())
@@ -96,6 +130,8 @@ export default function MoreProduct() {
     );
   });
 
+  console.log("log cate:" + dataCategory);
+
   const handleTotal = () => {
     var sumPrice = 0;
     listDrink1.map((val, index) => {
@@ -125,34 +161,40 @@ export default function MoreProduct() {
 
   const drinks = listDrink.map((val) => {
     return (
-      <VerticalItem key={val._id} name={val.name} image={val.image} price={val.price} addToList={addToList} drink={val} />
+      <VerticalItem key={val._id} name={val.name} image={val.image} price={val.price} addToList={addToList} showsVerticalScrollIndicator={false} drink={val} />
     )
   })
   return (
-    <div className="container">
+    <div className="container ">
       <div className="row pb-1">
         <div className="col-12">
           <div className="row text-center d-flex align-items-center bg-white rounded-3  justify-content-center " >
             <div className="col-6 bg-success-subtle rounded-start" style={{ marginTop: "-1.5%" }}>
-              <div class="d-flex my-2 justify-content-between col-4 mb-4">
-                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={() => {
-                  checkKey();
-                }}>ALL</button>
-                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={() => {
-                  setTypeSort("sortIncrease");
-                }}>Increase</button>
-                <button type="button" class="btn btn-outline-primary btn-sm me-2" onClick={() => {
-                  setTypeSort("sortDecrease");
-                }}>Decrease</button>
-                <div class="dropdown">
-                  <a class="btn btn-outline-primary  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div className="d-flex my-2 justify-content-between col-4 mb-4">
+                <button type="button"
+                  className="btn btn-outline-primary btn-sm me-2"
+                  onClick={() => { checkKey(); }}> ALL
+                </button>
+                <button type="button"
+                  className="btn btn-outline-primary btn-sm me-2"
+                  onClick={() => {
+                    setTypeSort("sortIncrease");
+                  }}>Increase
+                </button>
+                <button type="button"
+                  className="btn btn-outline-primary btn-sm me-2"
+                  onClick={() => {
+                    setTypeSort("sortDecrease");
+                  }}>Decrease
+                </button>
+                <div className="dropdown">
+                  <a className="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown link
                   </a>
-
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <ul className="dropdown-menu" >
+                    <li >
+                      {dataCategory}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -161,16 +203,18 @@ export default function MoreProduct() {
               </div>
             </div>
             <div className="col-6 mt-0 mt-3 bg-danger-subtle rounded-end-3 d-block over position-relative border-start border-dark-subtle">
-              <div className=" overflow-y-scroll mx-2" style={{ overflowY: 'scroll', height: '530px', width: '100%' }}>
-                {drinks1}
+              <div className="">
+                <div className=" overflow-y-scroll scro" style={{ overflowY: 'scroll', height: '530px', width: '100%' }}>
+                  {drinks1}
+                </div>
               </div>
-              <div className="total d-flex justify-content-between mt-3 mx-3">
-                <h5 className="text-black text-decoration-underline font-weight-bold" >Total :</h5>
+              <div className="total d-flex justify-content-between mt-2 mx-4 border-top pt-2 border-dark  border-opacity-50">
+                <h5 className="text-black  font-weight-bold" >Total : <i class="fa-solid fa-hand-holding-dollar"></i></h5>
                 <p className="text-black fs-5" >{price}  &#8205; VND</p>
               </div>
               <div className="btn w-100 position-absolute bottom-0 mt-3 d-flex justify-content-between">
-                <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} >Thanh Toan</button>
-                <button className="bg-info w-50 " style={{ height: 50 }} >Thong Bao</button>
+                <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} > <i class="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>Thanh Toán</button>
+                <button className="bg-info w-50 " style={{ height: 50 }} > <i class="fa-solid fa-bell mx-2"></i> Thông Báo</button>
               </div>
             </div>
           </div>

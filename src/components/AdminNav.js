@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "./../"
 
 export default function AdminNav() {
   return (
@@ -7,7 +8,9 @@ export default function AdminNav() {
       <div className="container-fluid d-flex flex-column p-0">
         <Link className="navbar-brand d-flex justify-content-start align-items-center sidebar-brand m-0" to="/">
           <div className="sidebar-brand-text mx-3">
-            <span className="fs-3" >Brand</span></div>
+            <i class="fa-solid fa-coffee-bean text-white"></i>
+            <span className="fs-3" > Brand</span>
+          </div>
         </Link>
         <hr className="sidebar-divider my-0" />
         <ul className="navbar-nav text-light" id="accordionSidebar">
