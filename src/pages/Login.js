@@ -1,21 +1,35 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../css1/bootstrap.min.css'
 import url from '../Url';
 import Cookies from "universal-cookie";
 export default function Login() {
+    
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    // const dispatch = useDispatch();
+    const cookie = new Cookies();
     const navigate = useNavigate();
-    // let errMsg = '';
-    let [errMsg, setErrMsg] = '';
     let role = '';
     const [listRole, setListRole] = useState([""]);
     // let [checked, setChecked] = useState(false);
     // const handleChange = (e) => {
     //     setChecked(e.target.checked);
     // };
+
+    const notificate = (err) => {
+        toast.error(err , {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+    }
     const getListRole = async () => {
         await fetch(url + 'role/all')
             .then((res) => res.json())
@@ -40,8 +54,6 @@ export default function Login() {
             password: password
         };
         checkRole();
-        const cookie = new Cookies();
-
         await fetch(url + "user/login", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -50,9 +62,7 @@ export default function Login() {
             .then((res) => res.json())
             .then((res) => {
                 if (res.error) {
-                    setErrMsg(res.error);
-                    // errMsg = res.error;
-                    console.log(errMsg);
+                    notificate(res.error)
                     console.log(res.error);
                 } else {
                     console.log(res.role);
@@ -96,7 +106,7 @@ export default function Login() {
                                                                 inputProps={{ 'aria-label': 'controlled' }}
                                                             /> */}
                                                             {/* <p className="form-check-label custom-control-label" for="formCheck-1" ref={errMsg}>{errMsg}</p> */}
-                                                            <label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label>
+                                                            {/* <label ref={errMsg} className="form-check-label custom-control-label" aria-live="assertive" for="formCheck-1">{errMsg}</label> */}
                                                             {/* <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" defaultChecked={checked} onChange={() => setChecked(!checked)} /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div> */}
                                                         </div>
                                                     </div>

@@ -1,8 +1,15 @@
-import {useState} from 'react'
-import { useSelector } from 'react-redux';
+import Cookies from "universal-cookie";
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminTop() {
+    const navigate = useNavigate();
     const user = localStorage.getItem('user');
+    const cookie = new Cookies();
+    const logout = () => {
+        localStorage.clear();
+        cookie.remove('token');
+        navigate('/login');
+    }
     console.log(user);
     return (
         <nav className="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
