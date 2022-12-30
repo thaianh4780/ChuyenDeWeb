@@ -6,6 +6,7 @@ import '../css1/bootstrap.min.css'
 import url from '../Url';
 import Cookies from "universal-cookie";
 import "../css1/setup.css"
+
 export default function Login() {
     
     const [userName, setUserName] = useState("");
@@ -80,50 +81,55 @@ export default function Login() {
         // return loginUser(user, role, dispatch, navigate);
     }
     return (
-        <div className="bg-gradient-primary line" >
-            <div className="container ">
-                <div className="row justify-content-center">
-                    <div className="col-md-9 col-lg-12 col-xl-10 cont">
-                        <div className="card shadow-lg o-hidden border-0 my-5">
-                            <div className="card-body p-0">
-                                <div className="row " >
-                                    <div className="col-lg-6 d-none d-lg-flex">
-                                        <div className="flex-grow-1 bg-login-image" style={{ backgroundImage: `url("assets/img/a7.jpg")`, }}></div>
-                                    </div>
-                                    <div className="col-lg-6">
-                                        <div className="p-5">
-                                            <div className="text-center">
-                                                <h4 className="text-dark mb-4">Welcome Back!</h4>
-                                            </div>
-                                            <form className="user" onSubmit={handleLogin}>
-                                                <div className="mb-3">
-                                                    <input className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" />
+        <>
+            <div className="bg-gradient-primary line">
+                <div className="container ">
+                    <div className="row justify-content-center">
+                        <div className="col-md-9 col-lg-12 col-xl-10 cont">
+                            <div className="card shadow-lg o-hidden border-0 my-5">
+                                <div className="card-body p-0">
+                                    <div className="row">
+                                        <div className="col-lg-6 d-none d-lg-flex">
+                                            <div className="flex-grow-1 bg-login-image" style={{ backgroundImage: `url("assets/img/a7.jpg")`, }}></div>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <div className="p-5">
+                                                <div className="text-center">
+                                                    <h4 className="text-dark mb-4">Welcome Back!</h4>
                                                 </div>
-                                                <div className="mb-3">
-                                                    <input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" />
-                                                </div>
-                                                <div className="mb-3">
-                                                    <div className="custom-control custom-checkbox small">
-                                                        <div className="form-check">
-                                                            <input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" />
-                                                            <label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label>
+                                                <form className="user" onSubmit={handleLogin}>
+                                                    <div className="mb-3">
+                                                        <input className="form-control form-control-user" type="username" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter User Name..." name="username" onChange={(e) => setUserName(e.target.value)} />
+                                                        </div>
+                                                    <div className="mb-3">
+                                                        <input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                                                            </div>
+                                                    <div className="mb-3 text-center">
+                                                        <div className="custom-control custom-checkbox small">
+                                                            {/* <Checkbox
+                                                                checked={checked}
+                                                                onChange={handleChange}
+                                                                inputProps={{ 'aria-label': 'controlled' }}
+                                                            /> */}
+                                                            {/* <p className="form-check-label custom-control-label" for="formCheck-1" ref={errMsg}>{errMsg}</p> */}
+                                                            {/* <label ref={errMsg} className="form-check-label custom-control-label" aria-live="assertive" for="formCheck-1">{errMsg}</label> */}
+                                                            {/* <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" defaultChecked={checked} onChange={() => setChecked(!checked)} /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div> */}
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <Link to="/admin" >
                                                     <button className="btn btn-primary d-block btn-user w-100" type="submit" >
                                                         Login
                                                     </button>
-                                                </Link>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }

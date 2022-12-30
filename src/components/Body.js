@@ -17,9 +17,12 @@ const Body = () => {
 
                     </button>
                 </Link>
-                <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
-                    <i class="fa-sharp fa-solid fa-comment-dollar"></i>
-                </button>
+                <Link to="/total">
+                    <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
+                        <i class="fa-sharp fa-solid fa-comment-dollar"></i>
+                    </button>
+                </Link>
+
             </div>
             <MoreProduct />
         </div >

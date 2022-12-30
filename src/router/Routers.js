@@ -11,6 +11,7 @@ import ProductAdding from "../pages/ProductAdding";
 import StaffAdding from "../pages/StaffAdding";
 import StaffUpdating from "../pages/StaffUpdating";
 import ProductUpdating from "../pages/ProductUpdating";
+import Total from "../pages/Total";
 
 export default function Routers() {
 
@@ -19,6 +20,7 @@ export default function Routers() {
       <Router>
         <Routes>
           <Route path={"/"} element={<Home/>}/>
+          <Route path={"/total"} element={<Total/>}/>
           <Route path={"/productadding"} element={<ProductAdding/>}/>
           <Route path={"/productupdating"} element={<ProductUpdating/>}/>
           <Route path={"/staffadding"} element={<StaffAdding/>}/>

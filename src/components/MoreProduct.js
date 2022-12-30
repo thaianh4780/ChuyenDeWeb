@@ -138,15 +138,13 @@ export default function MoreProduct() {
     )
   });
 
-  console.log("log cate:" + dataCategory);
+  // console.log("log cate:" + dataCategory);
 
   const handleTotal = () => {
     var sumPrice = 0;
     listDrink1.map((val, index) => {
       sumPrice += val.price * val.count;
-      //console.log("tt: " + sumPrice);
     });
-    // console.log(sumPrice);
     setPrice(sumPrice);
   };
 
