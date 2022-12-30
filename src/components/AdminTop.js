@@ -1,5 +1,6 @@
 import Cookies from "universal-cookie";
 import { useNavigate } from 'react-router-dom';
+import { BiLogOut } from "react-icons/bi";
 
 export default function AdminTop() {
     const navigate = useNavigate();
@@ -26,9 +27,9 @@ export default function AdminTop() {
                                 <img className="border rounded-circle img-profile" src="assets1/img/avatars/avatar1.jpeg" />
                             </a>
                         </div>
-
                     </li>
                 </ul>
+                <button variant="outlined" style={{outline: 'none', backgroundColor: 'rgb(255 255 255)', border: 0}} onClick={()=>{logout()}}> <BiLogOut d-md-none color="blue" size={22}/> </button>
             </div>
         </nav>
     )

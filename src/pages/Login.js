@@ -13,10 +13,7 @@ export default function Login() {
     const navigate = useNavigate();
     let role = '';
     const [listRole, setListRole] = useState([""]);
-    // let [checked, setChecked] = useState(false);
-    // const handleChange = (e) => {
-    //     setChecked(e.target.checked);
-    // };
+    const [checked, setChecked] = useState(false);
 
     const notificate = (err) => {
         toast.error(err , {
@@ -98,16 +95,9 @@ export default function Login() {
                                                 <form className="user" onSubmit={handleLogin}>
                                                     <div className="mb-3"><input className="form-control form-control-user" type="username" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter User Name..." name="username" onChange={(e) => setUserName(e.target.value)} /></div>
                                                     <div className="mb-3"><input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" onChange={(e) => setPassword(e.target.value)} /></div>
-                                                    <div className="mb-3 text-center">
+                                                    <div className="mb-3">
                                                         <div className="custom-control custom-checkbox small">
-                                                            {/* <Checkbox
-                                                                checked={checked}
-                                                                onChange={handleChange}
-                                                                inputProps={{ 'aria-label': 'controlled' }}
-                                                            /> */}
-                                                            {/* <p className="form-check-label custom-control-label" for="formCheck-1" ref={errMsg}>{errMsg}</p> */}
-                                                            {/* <label ref={errMsg} className="form-check-label custom-control-label" aria-live="assertive" for="formCheck-1">{errMsg}</label> */}
-                                                            {/* <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" defaultChecked={checked} onChange={() => setChecked(!checked)} /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div> */}
+                                                            <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" defaultChecked={checked} onChange={() => setChecked(!checked)} /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
                                                         </div>
                                                     </div>
                                                     <button className="btn btn-primary d-block btn-user w-100" type="submit" >
