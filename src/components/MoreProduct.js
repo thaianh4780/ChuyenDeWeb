@@ -14,18 +14,20 @@ export default function MoreProduct() {
   const [listCategory, setListCategory] = useState([]);
   const [typeSort, setTypeSort] = useState("");
   const [listSortDrinkOnPrice, setListSortDrinkOnPrice] = useState([]);
+  
   const [number, setNumber] = useState([]);
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(false);  
   const [type, setType] = useState("");
+  const handleChangeType = (id)=>{
+      console.log(id);
+      setType(id);
+  }
 
   // xuất danh mục xuống dropdown
   const dataCategory = listCategory.map((item) => {
+    
     return <div key={item._id}>
-      <a className="dropdown-item text-capitalize ps-2" onClick={(item, index) => {
-        // setCategoryId(item.key);
-        setType(item.key);
-        console.log("key: " + item.key);
-      }} >{item.name}</a>
+      <a className="dropdown-item text-capitalize ps-2" onClick={() => handleChangeType(item._id)} >{item.name}</a>
     </div>
   });
 
@@ -130,6 +132,12 @@ export default function MoreProduct() {
     );
   });
 
+  const drinkByCategory = listDrinkByCategory.map((val) => {
+    return (
+      <VerticalItem key={val._id} name={val.name} image={val.image} price={val.price} addToList={addToList} drink={val} />
+    )
+  });
+
   console.log("log cate:" + dataCategory);
 
   const handleTotal = () => {
@@ -143,7 +151,9 @@ export default function MoreProduct() {
   };
 
   const checkType = () => {
-    if (typeSort) {
+    if (type) {
+      return drinkByCategory;
+    } else if (typeSort) {
       return drinkBySort;
     } else {
       return drinks;
@@ -151,6 +161,7 @@ export default function MoreProduct() {
   };
 
   const checkKey = () => {
+    setType(null);
     setCheck(!check);
     setTypeSort(null);
   };
@@ -187,6 +198,8 @@ export default function MoreProduct() {
                     setTypeSort("sortDecrease");
                   }}>Decrease
                 </button>
+
+
                 <div className="dropdown">
                   <a className="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown link
@@ -198,6 +211,8 @@ export default function MoreProduct() {
                   </ul>
                 </div>
               </div>
+
+              
               <div className="row row-cols-1 row-cols-md-4 g-4 mx-2 overflow-y-scroll over me-5 " style={{ overflowY: 'scroll', height: '600px', width: '100%' }}>
                 {checkType()}
               </div>
