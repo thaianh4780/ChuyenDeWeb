@@ -1,6 +1,9 @@
-import React from 'react'
+import {useState} from 'react'
+import { useSelector } from 'react-redux';
 
 export default function AdminTop() {
+    const user = localStorage.getItem('user');
+    console.log(user);
     return (
         <nav className="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
             <div className="container-fluid">
@@ -12,7 +15,7 @@ export default function AdminTop() {
                     <li className="nav-item dropdown no-arrow">
                         <div className="nav-item dropdown no-arrow">
                             <a className="dropdown-toggle nav-link" href="#">
-                                <span className="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span>
+                                <span className="d-none d-lg-inline me-2 text-gray-600 small">Hi {user}</span>
                                 <img className="border rounded-circle img-profile" src="assets1/img/avatars/avatar1.jpeg" />
                             </a>
                         </div>
