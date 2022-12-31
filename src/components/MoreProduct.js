@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Product from './Product'
+import { useNavigate } from 'react-router-dom'
 import '../css1/setup.css'
 import DrinkTable from './DrinkTable'
 import Totail from './Totail'
@@ -14,8 +15,7 @@ export default function MoreProduct() {
   const [listCategory, setListCategory] = useState([]);
   const [typeSort, setTypeSort] = useState("");
   const [listSortDrinkOnPrice, setListSortDrinkOnPrice] = useState([]);
-
-  const [number, setNumber] = useState([]);
+  const navigate = useNavigate();
   const [check, setCheck] = useState(false);
   const [type, setType] = useState("");
   const handleChangeType = (id) => {
@@ -99,6 +99,7 @@ export default function MoreProduct() {
     });
     setListDrink1([...drinks]);
   };
+
   const addToList = (drink) => {
     if (listDrink1.includes(drink)) return
     setListDrink1(prev => {
@@ -161,6 +162,39 @@ export default function MoreProduct() {
       <VerticalItem key={val._id} name={val.name} image={val.image} price={val.price} addToList={addToList} showsVerticalScrollIndicator={false} drink={val} />
     )
   })
+
+
+  const total = async (data) => {
+    let listDrinkOder = [];
+    let listDrinkOder1 = [];
+    data.map((item) => {
+      listDrinkOder.push({
+        qyt: item.count,
+        price: item.price,
+        drink: item._id,
+      });
+      listDrinkOder1.push({
+        name: item.name,
+        image: item.image,
+        qyt: item.count,
+        price: item.price,
+        drink: item._id,
+      });
+    });
+    await fetch(url + "drinkorder/add", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(listDrinkOder),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("drinkorder", JSON.stringify(listDrinkOder1))
+        return navigate('/total');
+      })
+      .catch((err) => console.log(err.json()));
+  };
+
   return (
     <div className="container ">
       <div className="row pb-1">
@@ -210,7 +244,10 @@ export default function MoreProduct() {
                 <p className="text-black fs-5" >{price}  &#8205; VND</p>
               </div>
               <div className="btn w-100 position-absolute bottom-0 mt-3 d-flex justify-content-between">
-                <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} > <i class="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>Thanh Toán</button>
+                <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} onClick = {() => {total(listDrink1)}}>
+                  <i class="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
+                  Thanh Toán
+                </button>
                 <button className="bg-info w-50 " style={{ height: 50 }} > <i class="fa-solid fa-bell mx-2"></i> Thông Báo</button>
               </div>
             </div>
