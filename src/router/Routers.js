@@ -12,6 +12,8 @@ import StaffAdding from "../pages/StaffAdding";
 import StaffUpdating from "../pages/StaffUpdating";
 import ProductUpdating from "../pages/ProductUpdating";
 import Total from "../pages/Total";
+import Table from "../components/Table";
+import Work from "../pages/Work";
 
 export default function Routers() {
 
@@ -19,7 +21,10 @@ export default function Routers() {
     <div>
       <Router>
         <Routes>
+
+          <Route path={"/table"} element={<Table/>}/>
           <Route path={"/"} element={<Home/>}/>
+          <Route path={"/work"} element={<Work/>}/>
           <Route path={"/total"} element={<Total/>}/>
           <Route path={"/productadding"} element={<ProductAdding/>}/>
           <Route path={"/productupdating/:id"} element={<ProductUpdating/>}/>

@@ -1,8 +1,8 @@
 import React from "react";
-import Body from "../components/Body";
+import Table from "../components/Table";
 import "../css2/bootstrap.min.css"
 export default function Home() {
   return (
-     <Body/>
+     <Table/>
   );
 }
