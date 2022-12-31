@@ -142,6 +142,6 @@ export default function ProductForm() {
                     <AdminFooter />
                 </div>
             </div>
-        </div>
+        </div>  
     )
 }

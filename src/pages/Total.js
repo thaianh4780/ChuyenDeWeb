@@ -59,14 +59,14 @@ export default function Total() {
             <div className="posion-fixed d-block position-fixed top-0 end-0 mx-4 my-3 text-center " style={{ width: 50 }}>
                 <Link to="/">
                     <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
-                        <i class="fa-solid fa-house-user"></i>
+                        <i class="fa-solid fa-house-user text-light "></i>
                     </button>
                 </Link>
             </div>
             <div id="wrapper" className="  " >
                 <div className="d-flex flex-column" id="content-wrapper">
                     <div id="content" className="line" >
-                        <div className="container-fluid bg-gradient-primary">
+                        <div className="container-fluid bg-gradient-primary line">
                             <h3 className="text-dark mb-4">&#8205; </h3>
                             <div className="card shadow mx-5">
                                 <div className="card-body mx-5">
@@ -96,8 +96,8 @@ export default function Total() {
                                             </tfoot>
                                         </table>
                                     </div>
-                                    <div className='text-center'>
-                                        <button className="bg-success w-50" style={{ height: 40 }} onClick={() => {order(listDrink)}}>
+                                    <div className='text-center '>
+                                        <button className="btn bg-success w-50 text-light" style={{ height: 40 }} onClick={() => {order(listDrink)}}>
                                             <i class="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
                                             Thanh Toán
                                         </button>
