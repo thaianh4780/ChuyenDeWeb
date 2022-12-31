@@ -19,7 +19,7 @@ export default function Table() {
 
     const handleChangeType = (id) => {
         setType(id);
-      }
+    }
 
     const dropdown = listCategory.map((item) => {
         if (type == item._id) {
@@ -47,8 +47,9 @@ export default function Table() {
 
     const listTable = tables.map((item) => {
         return (
-            <div className="col">
-                <div className="card setup-card  shadow ">
+
+            <div className="card setup-card col-md-2 mx-2 shadow ">
+                <Link to="/work" className="text-decoration-none text-dark" >
                     <img src={"https:iheartcraftythings.com/wp-content/uploads/2021/05/Table-DRAWING-%E2%80%93-STEP-10.jpg"} height={120} width={100.9} className="card-img-top border-bottom border-dark-subtle " alt="..." />
                     <div className="card-body d-flex justify-content-between position-relative text-center">
                         <p className="card-text text-black text-nowrap text-capitalize ">{item.name}</p>
@@ -60,7 +61,7 @@ export default function Table() {
                         )}
                         <p className="card-title position-absolute top-50 bg-white rounded-top-3 ms-3 ps-1" > {item.area.name}</p>
                     </div>
-                </div>
+                </Link>
             </div>
 
         )
@@ -70,7 +71,7 @@ export default function Table() {
     return (
         <div style={{ backgroundImage: `url("assets/img/bg.jpg")`, }} className="py-5 ">
             <div className="posion-fixed d-block position-fixed top-0 end-0 mx-4 my-3 text-center " style={{ width: 50 }}>
-                <Link to="/login">
+                <Link to="/login" className="text-decoration-none text-dark" >
                     <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
                         <i className="fa-solid fa-house-user"></i>
                     </button>
@@ -89,17 +90,19 @@ export default function Table() {
                                         </a>
                                         <ul className="dropdown-menu" >
                                             <li >
-                                                {dataCategory}
+                                                <div className="col w-100">
+                                                    {dataCategory}
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div className="row w-100 text-center d-flex align-items-center bg-white rounded-3  justify-content-center " >
-                                    <Link to="/work" className="text-decoration-none text-dark" >
+                                    <a className="text-decoration-none text-dark" >
                                         <div className="row row-cols-1 row-cols-md-4 g-4 mx-2 overflow-y-scroll over me-5 " >
                                             {listTable}
                                         </div>
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
