@@ -37,6 +37,7 @@ export default function MoreProduct() {
       return item.name;
     }
   });
+  const table = JSON.parse(localStorage.getItem('table'));
 
   useEffect(() => {
     getListDrink();
@@ -177,6 +178,7 @@ export default function MoreProduct() {
 
     data.map((item) => {
       listDrinkOder.push({
+        table: table._id,
         qyt: item.count,
         price: item.price,
         drink: item._id,
@@ -231,7 +233,8 @@ export default function MoreProduct() {
         .then((data) => {
           localStorage.setItem("drinkorder", JSON.stringify(listDrinkOder1));
           setListDrink1([]);
-          navigate("/");
+          localStorage.removeItem("table")
+          navigate("/table");
         })
         .catch((err) => console.log(err.json()));
     }
@@ -287,11 +290,11 @@ export default function MoreProduct() {
               <div className="d-flex border-top pt-2 border-dark  border-opacity-50 border-top pt-2 border-dark  border-opacity-50 w-100 justify-content-between">
                 <div className="total d-flex justify-content-between mt-2 mx-4" style={{width:"200px"}}>
                   <h5 className="text-black  font-weight-bold" >Bàn:</h5>
-                  <p className="text-black fs-5" >{price}  &#8205;</p>
+                  <p className="text-black fs-5" >{table.name}  &#8205;</p>
                 </div>
-                <div className="total d-flex justify-content-between mt-2 mx-4 " style={{width:"200px"}} >
+                <div className="total d-flex justify-content-between mt-2 mx-4 text-nowrap " style={{width:"300px"}} >
                   <h5 className="text-black  font-weight-bold" >Total : <i className="fa-solid fa-hand-holding-dollar"></i></h5>
-                  <p className="text-black fs-5 " >{price}  &#8205; VND</p>
+                  <p className="text-black fs-5 text-nowrap " >{price}  &#8205; VND</p>
                 </div>
               </div>
 
