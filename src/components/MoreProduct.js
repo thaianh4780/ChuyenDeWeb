@@ -10,7 +10,7 @@ import HorizonItem from './HorizonItem'
 
 
 export default function MoreProduct() {
-  
+
   const [listDrink, setListDrink] = useState([]);
   const [listDrink1, setListDrink1] = useState([]);
   const [listDrinkByCategory, setListDrinkByCategory] = useState([]);
@@ -284,11 +284,18 @@ export default function MoreProduct() {
                   {drinks1}
                 </div>
               </div>
-              <div className="total d-flex justify-content-between mt-2 mx-4 border-top pt-2 border-dark  border-opacity-50">
-                <h5 className="text-black  font-weight-bold" >Total : <i className="fa-solid fa-hand-holding-dollar"></i></h5>
-                <p className="text-black fs-5" >{price}  &#8205; VND</p>
+              <div className="d-flex border-top pt-2 border-dark  border-opacity-50 border-top pt-2 border-dark  border-opacity-50 w-100 justify-content-between">
+                <div className="total d-flex justify-content-between mt-2 mx-4" style={{width:"200px"}}>
+                  <h5 className="text-black  font-weight-bold" >Bàn:</h5>
+                  <p className="text-black fs-5" >{price}  &#8205;</p>
+                </div>
+                <div className="total d-flex justify-content-between mt-2 mx-4 " style={{width:"200px"}} >
+                  <h5 className="text-black  font-weight-bold" >Total : <i className="fa-solid fa-hand-holding-dollar"></i></h5>
+                  <p className="text-black fs-5 " >{price}  &#8205; VND</p>
+                </div>
               </div>
-              <div className="btn w-100 position-absolute bottom-0 mt-3 d-flex justify-content-between">
+
+              <div className="btn w-100 position-absolute bottom-0 mt-3 d-flex justify-content-between" >
                 <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} onClick={() => { total(listDrink1) }}>
                   <i className="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
                   Thanh Toán
