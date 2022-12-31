@@ -28,8 +28,9 @@ export default function AdminTop() {
                         </div>
                     </li>
                 </ul>
-                <button variant="outlined" style={{outline: 'none', backgroundColor: 'rgb(255 255 255)', border: 0}} onClick={()=>{logout()}}> <BiLogOut d-md-none color="blue" size={22}/> </button>
-            </div>
-        </nav>
+                <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}
+                onClick={() => { logout() }}> <i class="fa-solid fa-right-from-bracket fs-5 m-1 text-dark"></i></button>
+        </div>
+        </nav >
     )
 }
