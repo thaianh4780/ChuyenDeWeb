@@ -102,7 +102,10 @@ export default function Login() {
                                                             </div>
                                                     <div className="mb-3 text-center">
                                                         <div className="custom-control custom-checkbox small">
-                                                            <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" defaultChecked={checked} onChange={() => setChecked(!checked)} /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                                            <div className="form-check">
+                                                                <input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" defaultChecked={checked} onChange={() => setChecked(!checked)} />
+                                                                <label className="form-check-label custom-control-label position-absolute" style={{left:"58%"}} for="formCheck-1">Remember Me</label>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                     <button className="btn btn-primary d-block btn-user w-100" type="submit" >
