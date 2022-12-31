@@ -47,17 +47,16 @@ export default function Table() {
 
     const listTable = tables.map((item) => {
         return (
-
-            <div className="card setup-card col-md-2 mx-2 shadow ">
+            <div className="card setup-card col-md-2 mx-2 shadow border border-dark-subtle p-2 ">
                 <Link to="/work" className="text-decoration-none text-dark" >
                     <img src={"https:iheartcraftythings.com/wp-content/uploads/2021/05/Table-DRAWING-%E2%80%93-STEP-10.jpg"} height={120} width={100.9} className="card-img-top border-bottom border-dark-subtle " alt="..." />
                     <div className="card-body d-flex justify-content-between position-relative text-center">
                         <p className="card-text text-black text-nowrap text-capitalize ">{item.name}</p>
                         {item.status == true && (
-                            <FaCalendarCheck className="fa-solid fa-check position-absolute top-0 end-0 mt-4 me-2" color={item?.color ? item.color : "#FE0000"} />
+                            <FaCalendarCheck className="fa-solid fa-check position-absolute top-0 end-0 mt-4 me-2" color={item?.color ?item.color : "#00FE3B" } />
                         )}
                         {item.status == false && (
-                            <FaCalendarCheck className="fa-solid fa-check position-absolute top-0 end-0 mt-4 me-2" color={item?.color ? item.color : "#00FE3B"} />
+                            <FaCalendarCheck className="fa-solid fa-check position-absolute top-0 end-0 mt-4 me-2" color={item?.color ?item.color : "#FE0000" } />
                         )}
                         <p className="card-title position-absolute top-50 bg-white rounded-top-3 ms-3 ps-1" > {item.area.name}</p>
                     </div>
@@ -70,8 +69,8 @@ export default function Table() {
 
     return (
         <div style={{ backgroundImage: `url("assets/img/bg.jpg")`, }} className="py-5 ">
-            <div className="posion-fixed d-block position-fixed top-0 end-0 mx-4 my-3 text-center " style={{ width: 50 }}>
-                <Link to="/login" className="text-decoration-none text-dark" >
+            <div className="posion-fixed d-block position-fixed top-0 end-0 mx-5 my-5 text-center " style={{ width: 50 }}>
+                <Link to="/login" className="text-decoration-none text-dark " >
                     <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
                         <i className="fa-solid fa-house-user"></i>
                     </button>
@@ -85,7 +84,7 @@ export default function Table() {
                                 <h1 className=' pt-5'>TableChoosing</h1>
                                 <div className="d-flex my-2 justify-content-between col-4 mb-4">
                                     <div className="dropdown">
-                                        <a className="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a className="btn btn-outline-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             {type != "" ? dropdown : "Category"}
                                         </a>
                                         <ul className="dropdown-menu" >
