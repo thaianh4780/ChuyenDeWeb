@@ -98,7 +98,7 @@ export default function Total() {
                                     </div>
                                     <div className='text-center '>
                                         <button className="btn bg-success w-50 text-light" style={{ height: 40 }} onClick={() => {order(listDrink)}}>
-                                            <i class="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
+                                            <i className="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
                                             Thanh Toán
                                         </button>
                                     </div>
