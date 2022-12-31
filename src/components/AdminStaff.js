@@ -51,6 +51,18 @@ export default function AdminStaff() {
       });
   };
 
+  const search = async (key) => {
+    if (key) {
+      await fetch(url + "user/search/" + key)
+      .then((res) => res.json())
+      .then((data) => {
+        setListUser(data);
+      }).catch((err) => console.log("ERR", err));
+    } else {
+      getListUser();
+    }
+  };
+
   const staffs = listUser.map((val) => {
     return (
       <tr key={val.id} >
@@ -81,7 +93,7 @@ export default function AdminStaff() {
             <div className="col-md-6 text-nowrap">
               <div className="text-md-start dataTables_filter" id="dataTable_filter">
                 <label className="form-label">
-                  <input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" />
+                  <input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" onChange={(e) => {search(e.target.value)}}/>
                 </label>
               </div>
             </div>

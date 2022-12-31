@@ -38,6 +38,17 @@ export default function AdminProduct() {
     alert("Done Delete")
   };
 
+  const search = async (key) => {
+    if (key) {
+      await fetch(url + "drink/search/" + key)
+      .then((res) => res.json())
+      .then((data) => {
+        setListDrink(data);
+      }).catch((err) => console.log("ERR", err));
+    } else {
+      getListDrink();
+    }
+  };
 
   const drinks = listDrink.map((val) => {
     return (
@@ -91,6 +102,7 @@ export default function AdminProduct() {
                     className="form-control form-control-sm"
                     aria-controls="dataTable"
                     placeholder="Search"
+                    onChange={(e) => {search(e.target.value)}}
                   />
                 </label>
               </div>
