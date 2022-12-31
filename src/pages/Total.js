@@ -64,7 +64,7 @@ export default function Total() {
                 </Link>
             </div>
             <div id="wrapper" className="  " >
-                <div className="d-flex flex-column" id="content-wrapper">
+                <div className="d-flex flex-column line" id="content-wrapper">
                     <div id="content" className="line" >
                         <div className="container-fluid bg-gradient-primary line">
                             <h3 className="text-dark mb-4">&#8205; </h3>
