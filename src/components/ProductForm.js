@@ -73,6 +73,7 @@ export default function ProductForm() {
                 return navigate('/product');
             }
         });
+        
     }
 
     return (
@@ -92,7 +93,7 @@ export default function ProductForm() {
                         </div>
                         <div className="col my-3 text-start">
                             <label htmlFor="inputEmail4">Image</label>
-                            <input type="file" className="form-control my-2" id="validatedCustomFile" onChange={(e) => setProduct((oldValue) => ({ ...oldValue, image: e.target.value }))} />
+                            <input type="text" className="form-control my-2" id="validatedCustomFile" onChange={(e) => setProduct((oldValue) => ({ ...oldValue, image: e.target.value }))} />
                         </div>
                         <div className="col my-3 text-start">
                             <label htmlFor="inputState">Category</label>
