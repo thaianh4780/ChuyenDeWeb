@@ -47,7 +47,6 @@ export default function Table() {
             if (res.error) {
                 return console.log(res.error);
             } else {
-                console.log(res.data);
                 return localStorage.setItem('table', JSON.stringify(table));
             }
         })
@@ -92,7 +91,6 @@ export default function Table() {
         await fetch(url + "table/list")
             .then((res) => res.json())
             .then((res) => {
-                console.log(res.data);
                 var data = res.data;
                 setTables(data);
             })
@@ -100,8 +98,8 @@ export default function Table() {
     };
     return (
         <div style={{ backgroundImage: `url("assets/img/bg.jpg")`, }} className="py-5 ">
-            <div className="posion-fixed d-block position-fixed top-0 end-0 mx-4 my-3 text-center " style={{ width: 50 }}>
-                <Link to="/login">
+            <div className="posion-fixed d-block position-fixed top-0 end-0 mx-5 my-5 text-center " style={{ width: 50 }}>
+                <Link to="/login" className="text-decoration-none text-dark " >
                     <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
                         <i className="fa-solid fa-house-user"></i>
                     </button>
@@ -116,7 +114,7 @@ export default function Table() {
                                 <div className="d-flex my-2 justify-content-between col-4 mb-4">
                                     <div className="dropdown">
                                         <a className="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {type != "" ? dropdown : "Area"}
+                                            {type != "" ? dropdown : "Category"}
                                         </a>
                                         <ul className="dropdown-menu" >
                                             <li >
@@ -126,7 +124,7 @@ export default function Table() {
                                     </div>
                                 </div>
                                 <div className="row w-100 text-center d-flex align-items-center bg-white rounded-3  justify-content-center " >
-                                    <Link to="/work" className="text-decoration-none text-dark">
+                                    <Link to="/work" className="text-decoration-none text-dark" >
                                         <div className="row row-cols-1 row-cols-md-4 g-4 mx-2 overflow-y-scroll over me-5 " >
                                             {tables.map((item) => {
                                                 return (
