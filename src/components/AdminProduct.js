@@ -58,7 +58,7 @@ export default function AdminProduct() {
             className="btn btn-success text-light btn-sm"
             to={`/productupdating/${val._id}`}
           >
-            <i class="fa-solid fa-square-pen pe-1"></i>Update
+            <i className="fa-solid fa-square-pen pe-1"></i>Update
           </Link>
         </td>
         <td>
@@ -67,7 +67,7 @@ export default function AdminProduct() {
             onClick={() => deleteDrink(val._id)}
             className="btn btn-danger text-light btn-sm"
           >
-            <i class="fa-solid fa-trash pe-1"></i>Detele
+            <i className="fa-solid fa-trash pe-1"></i>Detele
           </Link>
         </td>
       </tr>
@@ -102,7 +102,7 @@ export default function AdminProduct() {
                   type="button"
                   to="/productadding"
                 >
-                  <i class="fa-solid fa-circle-plus mx-2"></i>Adding
+                  <i className="fa-solid fa-circle-plus mx-2"></i>Adding
                 </Link>
               </div>
             </div>

@@ -21,7 +21,7 @@ export default function Total() {
         });
         setPrice(sumPrice);
     };
-
+    console.log(data);
     useEffect(() => {
         handleTotal();
     }, [listDrink]);
@@ -59,7 +59,7 @@ export default function Total() {
             <div className="posion-fixed d-block position-fixed top-0 end-0 mx-4 my-3 text-center " style={{ width: 50 }}>
                 <Link to="/">
                     <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
-                        <i class="fa-solid fa-house-user"></i>
+                        <i className="fa-solid fa-house-user"></i>
                     </button>
                 </Link>
             </div>
@@ -98,7 +98,7 @@ export default function Total() {
                                     </div>
                                     <div className='text-center'>
                                         <button className="bg-success w-50" style={{ height: 40 }} onClick={() => {order(listDrink)}}>
-                                            <i class="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
+                                            <i className="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
                                             Thanh Toán
                                         </button>
                                     </div>

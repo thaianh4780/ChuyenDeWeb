@@ -59,13 +59,13 @@ export default function AdminStaff() {
         <td>{val.phone}</td>
         <td>
           <Link type="button" className="btn btn-success  text-light btn-sm" to={`/staffupdating/${val._id}`} >
-            <i class="fa-solid fa-square-pen pe-1"></i>
+            <i className="fa-solid fa-square-pen pe-1"></i>
             Update
           </Link>
         </td>
         <td>
           <button type="button" className="btn btn-danger   text-light btn-sm" onClick={() => { deleteUser(val._id) }}>
-            <i class="fa-solid fa-trash pe-1"></i>
+            <i className="fa-solid fa-trash pe-1"></i>
             Detele
           </button>
         </td>
@@ -88,7 +88,7 @@ export default function AdminStaff() {
             <div className="col-md-6">
               <div className="d-grid gap-2 d-md-block text-md-end">
                 <Link className="btn btn-primary  " type="button" to="/staffadding" >
-                  <i class="fa-solid fa-circle-plus mx-2"></i>
+                  <i className="fa-solid fa-circle-plus mx-2"></i>
                   Adding
                 </Link>
               </div>

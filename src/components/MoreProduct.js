@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Product from './Product'
 import { useNavigate } from 'react-router-dom'
 import '../css1/setup.css'
@@ -15,6 +15,7 @@ export default function MoreProduct() {
   const [listCategory, setListCategory] = useState([]);
   const [typeSort, setTypeSort] = useState("");
   const [listSortDrinkOnPrice, setListSortDrinkOnPrice] = useState([]);
+  const list = JSON.parse(localStorage.getItem('drinkorder'));
   const navigate = useNavigate();
   const [check, setCheck] = useState(false);
   const [type, setType] = useState("");
@@ -28,7 +29,6 @@ export default function MoreProduct() {
       <a className="dropdown-item text-capitalize ps-2" onClick={() => handleChangeType(item._id)} >{item.name}</a>
     </div>
   });
-
   const dropdown = listCategory.map((item) => {
     if (type == item._id) {
       return item.name;
@@ -163,10 +163,15 @@ export default function MoreProduct() {
     )
   })
 
+  // console.log(listDrink1);
 
-  const total = async (data) => {
+  const arrOld = [];
+
+
+  const total = useCallback((data) => {
     let listDrinkOder = [];
     let listDrinkOder1 = [];
+
     data.map((item) => {
       listDrinkOder.push({
         qyt: item.count,
@@ -181,19 +186,56 @@ export default function MoreProduct() {
         drink: item._id,
       });
     });
-    await fetch(url + "drinkorder/add", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(listDrinkOder),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("drinkorder", JSON.stringify(listDrinkOder1))
-        return navigate('/total');
+
+
+    if (list.length > 0) {
+      arrOld.push(...list);
+    }
+    let flag = false;
+    if (list.length > 0) {
+      for (let x = 0; x < arrOld.length; x++) {
+        for (let y = 0; y < listDrinkOder1.length; y++) {
+          if (flag) {
+            break;
+          }
+          if (arrOld[x].drink === listDrinkOder1[y].drink) {
+            arrOld[x].qyt = arrOld[x].qyt + listDrinkOder1[y].qyt;
+            flag = true;
+          } else {
+            arrOld.push(listDrinkOder1[y]);
+          }
+        }
+      }
+      fetch(url + "drinkorder/add", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(listDrinkOder),
       })
-      .catch((err) => console.log(err.json()));
-  };
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("drinkorder", JSON.stringify(arrOld));
+          setListDrink1([]);
+          navigate("/");
+        })
+        .catch((err) => console.log(err.json()));
+    } else {
+      fetch(url + "drinkorder/add", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(listDrinkOder),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("drinkorder", JSON.stringify(listDrinkOder1));
+          setListDrink1([]);
+          navigate("/");
+        })
+        .catch((err) => console.log(err.json()));
+    }
+    console.log(list);
+    console.log(arrOld);
+    console.log(listDrinkOder);
+  }, []);
 
   return (
     <div className="container ">
@@ -240,15 +282,15 @@ export default function MoreProduct() {
                 </div>
               </div>
               <div className="total d-flex justify-content-between mt-2 mx-4 border-top pt-2 border-dark  border-opacity-50">
-                <h5 className="text-black  font-weight-bold" >Total : <i class="fa-solid fa-hand-holding-dollar"></i></h5>
+                <h5 className="text-black  font-weight-bold" >Total : <i className="fa-solid fa-hand-holding-dollar"></i></h5>
                 <p className="text-black fs-5" >{price}  &#8205; VND</p>
               </div>
               <div className="btn w-100 position-absolute bottom-0 mt-3 d-flex justify-content-between">
-                <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} onClick = {() => {total(listDrink1)}}>
-                  <i class="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
+                <button className="bg-success w-50" style={{ height: 50, marginLeft: "5%" }} onClick={() => { total(listDrink1) }}>
+                  <i className="fa-sharp fa-solid fa-money-bill-1-wave mx-2"></i>
                   Thanh Toán
                 </button>
-                <button className="bg-info w-50 " style={{ height: 50 }} > <i class="fa-solid fa-bell mx-2"></i> Thông Báo</button>
+                <button className="bg-info w-50 " style={{ height: 50 }} > <i className="fa-solid fa-bell mx-2"></i> Thông Báo</button>
               </div>
             </div>
           </div>

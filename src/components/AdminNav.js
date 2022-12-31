@@ -8,7 +8,7 @@ export default function AdminNav() {
       <div className="container-fluid d-flex flex-column p-0">
         <Link className="navbar-brand d-flex justify-content-start align-items-center sidebar-brand m-0" to="/">
           <div className="sidebar-brand-text mx-3">
-            <i class="fa-solid fa-coffee-bean text-white"></i>
+            <i className="fa-solid fa-coffee-bean text-white"></i>
             <span className="fs-3" > Brand</span>
           </div>
         </Link>
