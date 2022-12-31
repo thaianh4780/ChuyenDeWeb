@@ -13,13 +13,13 @@ const Body = () => {
             <div className="posion-fixed d-block position-fixed top-0 end-0 mx-4 my-3 text-center " style={{ width: 50 }}>
                 <Link to="/login">
                     <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
-                        <i class="fa-solid fa-house-user"></i>
+                        <i className="fa-solid fa-house-user"></i>
 
                     </button>
                 </Link>
                 <Link to="/total">
                     <button className="btn rounded-circle" style={{ height: 50, width: 50, textAlign: 'center', justifyContent: 'center', }}>
-                        <i class="fa-sharp fa-solid fa-comment-dollar"></i>
+                        <i className="fa-sharp fa-solid fa-comment-dollar"></i>
                     </button>
                 </Link>
 
